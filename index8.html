@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - Transformando Cliques em Clientes</title>
+    <meta name="description" content="Somos a AURA, a agência que transforma cliques em clientes através de tráfego pago inteligente.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (para ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <style>
+        /* ==================== CONFIGURAÇÕES GLOBAIS E VARIÁVEIS ==================== */
+        :root {
+            --verde: #5EAC4B; /* Verde principal para CTAs e destaques */
+            --verde-hover: #4d8d3c;
+            --preto: #121212;
+            --cinza-escuro: #1C1C1C;
+            --bege: #F5F5DC; /* Usado como off-white */
+            --texto-claro: #EAEAEA;
+            --texto-escuro: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000; /* Fundo geral do body também alterado */
+            color: var(--texto-claro);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--verde);
+            color: #FFFFFF;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--verde-hover);
+        }
+
+        /* ==================== MENU SUPERIOR ==================== */
+        .top-menu {
+            background-color: rgba(18, 18, 18, 0.8); /* Ajustado para fundo preto */
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .top-menu .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            max-width: 120px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .menu-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu-links li {
+            margin-left: 2rem;
+        }
+
+        .menu-links a {
+            color: var(--texto-claro);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .menu-links a:hover {
+            color: var(--verde);
+            border-bottom-color: var(--verde);
+        }
+        
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* ==================== WHATSAPP FLUTUANTE ==================== */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ==================== SEÇÃO HERÓI COM LAYOUT DIVIDIDO ==================== */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; /* Espaço para o menu fixo */
+            background-color: #000000; /* Cor de fundo ajustada para preto puro */
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+            max-width: 50%;
+        }
+
+        .hero-video-wrapper {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        .hero-video-wrapper video {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .hero-text .brand-name {
+            font-size: 3.75rem;
+            font-weight: 700;
+            color: var(--verde);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--texto-claro);
+            opacity: 0.9;
+        }
+
+        /* ==================== SEÇÃO PROBLEMA ==================== */
+        .problem-section {
+            background-color: var(--bege);
+            color: var(--texto-escuro);
+        }
+
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .problem-item i {
+            font-size: 3rem;
+            color: var(--verde);
+            margin-bottom: 1rem;
+        }
+
+        .problem-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==================== SEÇÃO SOLUÇÃO ==================== */
+        .solution-section {
+            background-color: #000000;
+        }
+
+        .solution-section .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .solution-text {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .slogan-highlight {
+            font-size: 1.3rem;
+            color: var(--verde);
+        }
+
+        /* ==================== SEÇÃO SERVIÇOS ==================== */
+        .services-section {
+            background-color: var(--bege);
+            color: var(--texto-escuro);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: #FFFFFF;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--verde);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        /* ==================== SEÇÃO CLIENTES ==================== */
+        .clients-section {
+            background-color: #000000;
+            padding: 5rem 0;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        will-change: transform;
+        animation: none; 
+        }
+
+        .carousel-track.autoscroll {
+        animation: scroll 40s linear infinite;
+        }
+
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .carousel-slide {
+            flex-shrink: 0;
+            width: 180px; /* Largura da logo */
+            margin: 0 2rem; /* Espaçamento entre logos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            filter: grayscale(100%) brightness(1.5);
+            opacity: 0.8;
+            transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .carousel-slide:hover img {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-180px * 12 - 4rem * 12)); 
+            }
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+        }
+
+        .carousel-container:hover .carousel-arrow {
+            opacity: 1;
+        }
+
+        .carousel-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-arrow.prev {
+            left: 15px;
+        }
+
+        .carousel-arrow.next {
+            right: 15px;
+        }
+
+
+        /* ==================== SEÇÃO CONTATO ==================== */
+        .contact-section {
+            background-color: #000000;
+            text-align: center;
+        }
+        .contact-section .container{
+            max-width: 800px;
+        }
+        .contact-section p {
+            margin-bottom: 2.5rem;
+        }
+
+        /* ==================== RODAPÉ ==================== */
+        .footer {
+            background-color: #000000;
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        .footer .social-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer .social-links a {
+            margin: 0 1rem;
+            font-size: 3rem; /* Dobrado o tamanho do ícone */
+            text-decoration: none;
+            display: inline-block; /* Necessário para a transição de transform */
+            transition: transform 0.3s ease;
+        }
+
+        /* Cores específicas para cada rede social */
+        .footer .social-links .fa-instagram {
+            color: #E4405F;
+        }
+
+        .footer .social-links .fa-facebook {
+            color: #1877F2;
+        }
+        
+        .footer .social-links a:hover {
+            transform: scale(1.1); /* Efeito de zoom no hover */
+        }
+
+        /* ==================== MEDIA QUERIES (RESPONSIVO) ==================== */
+        @media (max-width: 992px) { /* Ajustado breakpoint para melhor adaptação */
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            .hero-video-wrapper {
+                max-width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-text .brand-name {
+                font-size: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+            
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: var(--cinza-escuro);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+            }
+            
+            .menu-links.active {
+                display: flex;
+            }
+
+            .menu-links ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== MENU SUPERIOR ==================== -->
+    <nav class="top-menu">
+        <div class="container">
+            <a href="#inicio" class="logo-container">
+                <img src="arquivos/logo.png" alt="Logo AURA">
+            </a>
+            <div class="menu-links" id="menu-links">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#problema">Desafios</a></li>
+                    <li><a href="#solucao">Solução</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+             <div class="mobile-menu-icon" id="mobile-menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== BOTÃO FLUTUANTE WHATSAPP ==================== -->
+    <a href="https://api.whatsapp.com/send?phone=5549988129403&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ==================== SEÇÃO TÍTULO ==================== -->
+    <header class="hero-section" id="inicio">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h2 class="brand-name">AURA</h2>
+                <h1>O Caminho Mais Curto Entre Seu Negócio e Seus Clientes.</h1>
+                <p>Somos a AURA. Desenhamos estratégias de tráfego pago que transformam seus cliques em clientes.</p>
+                <a href="#contato" class="cta-button">AGENDAR DIAGNÓSTICO GRATUITO</a>
+            </div>
+            <div class="hero-video-wrapper">
+                <video autoplay loop muted playsinline>
+                    <source src="arquivos/fundo2.mp4">
+                    Seu navegador não suporta o vídeo.
+                </video>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================== SEÇÃO PROBLEMA ==================== -->
+        <section class="problem-section" id="problema">
+            <div class="container">
+                <h2>Você se identifica com algum destes desafios?</h2>
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <i class="fas fa-eye-slash"></i>
+                        <h3>Visibilidade Baixa</h3>
+                        <p>Você cria conteúdo de qualidade, mas sente que fala para ninguém nas redes sociais e no Google?</p>
+                    </div>
+                    <div class="problem-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>Investimento sem Retorno</h3>
+                        <p>Já investiu em anúncios que só consumiram seu orçamento sem trazer vendas reais?</p>
+                    </div>
+                    <div class="problem-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Concorrência Acirrada</h3>
+                        <p>Seus concorrentes parecem estar em toda parte, dominando as buscas e os feeds?</p>
+                    </div>
+                    <div class="problem-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Falta de Tempo e Expertise</h3>
+                        <p>Você precisa gerenciar seu negócio e não tem como se especializar no universo dos anúncios online?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO SOLUÇÃO ==================== -->
+        <section class="solution-section" id="solucao">
+            <div class="container">
+                <h2>Chega de Achar. É Hora de Ser Encontrado.</h2>
+                <p class="solution-text">
+                    Enquanto a concorrência aposta na sorte, a AURA trabalha com dados e estratégia. Nossa especialidade é criar e gerenciar campanhas de anúncios que colocam sua marca exatamente onde seus futuros clientes estão procurando. Delegue seu marketing digital para especialistas e libere seu tempo para fazer o que você faz de melhor: cuidar do seu negócio.
+                </p>
+                <p class="slogan-highlight">É assim que <strong>transformamos cliques em clientes.</strong></p>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO SERVIÇOS ==================== -->
+        <section class="services-section" id="servicos">
+            <div class="container">
+                <h2>Nosso Arsenal Estratégico para o Seu Sucesso</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fab fa-google"></i>
+                        <h3>Gestão de Google Ads</h3>
+                        <p>Seja a primeira resposta quando seu cliente procurar no Google pela solução que você oferece. Colocamos você no topo.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fab fa-meta"></i>
+                        <h3>Gestão de Meta Ads</h3>
+                        <p>Crie desejo e gere demanda com anúncios de alto impacto e segmentação precisa no Instagram e Facebook.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Otimização Contínua</h3>
+                        <p>Analisamos os dados diariamente para potencializar o que funciona e proteger cada real do seu investimento.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Relatórios de Performance</h3>
+                        <p>Transparência total. Você recebe relatórios claros que mostram o retorno real sobre seu investimento.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Criação de Sites</h3>
+                        <p>Desenvolvemos sites e landing pages com design estratégico e foco na conversão, transformando sua presença online em uma poderosa ferramenta de aquisição de clientes.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Criativos Persuasivos</h3>
+                        <p>Produzimos imagens e vídeos que capturam a atenção e comunicam sua mensagem de forma eficaz, garantindo que suas campanhas se destaquem e gerem resultados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ==================== SEÇÃO CLIENTES ==================== -->
+        <section class="clients-section" id="clientes">
+            <div class="container">
+                <h2>Clientes que Confiam em Nós</h2>
+                <div class="carousel-container">
+                    <button class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-track-wrapper">
+                        <div class="carousel-track">
+                            <!-- Logos Originais -->
+                            <div class="carousel-slide"><img src="arquivos/cliente1.png" alt="Logo Cliente 1"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente2.png" alt="Logo Cliente 2"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente3.png" alt="Logo Cliente 3"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente4.png" alt="Logo Cliente 4"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente5.png" alt="Logo Cliente 5"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente6.png" alt="Logo Cliente 6"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente7.png" alt="Logo Cliente 7"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente8.png" alt="Logo Cliente 8"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente9.png" alt="Logo Cliente 9"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente10.png" alt="Logo Cliente 10"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente11.png" alt="Logo Cliente 11"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente12.png" alt="Logo Cliente 12"></div>
+                            <!-- Logos Duplicados para Efeito Infinito -->
+                            <div class="carousel-slide"><img src="arquivos/cliente1.png" alt="Logo Cliente 1"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente2.png" alt="Logo Cliente 2"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente3.png" alt="Logo Cliente 3"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente4.png" alt="Logo Cliente 4"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente5.png" alt="Logo Cliente 5"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente6.png" alt="Logo Cliente 6"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente7.png" alt="Logo Cliente 7"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente8.png" alt="Logo Cliente 8"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente9.png" alt="Logo Cliente 9"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente10.png" alt="Logo Cliente 10"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente11.png" alt="Logo Cliente 11"></div>
+                            <div class="carousel-slide"><img src="arquivos/cliente12.png" alt="Logo Cliente 12"></div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO CONTATO (CTA FINAL) ==================== -->
+        <section class="contact-section" id="contato">
+            <div class="container">
+                <h2>Pronto para Transformar seu Potencial em Resultados?</h2>
+                <p>Agende uma conversa e receba um diagnóstico 100% gratuito do seu negócio. Vamos analisar seu posicionamento online e mostrar um plano de ação inicial. Sem custos e sem compromisso.</p>
+                <a href="https://api.whatsapp.com/send?phone=5549988129403&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais." class="cta-button" target="_blank">QUERO MEU DIAGNÓSTICO GRATUITO</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/aura.gtp/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/people/Aura-Gest%C3%A3o-de-Tr%C3%A1fego-Pago/61574804053666/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+            <p>&copy; 2025 AURA Gestão de Tráfego. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Funcionalidade: Rolagem suave para âncoras
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    let targetId = this.getAttribute('href');
+                    let targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        if(window.innerWidth <= 768) {
+                            document.getElementById('menu-links').classList.remove('active');
+                        }
+                        
+                        const menuHeight = document.querySelector('.top-menu').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - menuHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Funcionalidade: Menu Hamburguer para mobile
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+            const menuLinks = document.getElementById('menu-links');
+
+            mobileMenuIcon.addEventListener('click', () => {
+                menuLinks.classList.toggle('active');
+            });
+
+            // Funcionalidade: Carrossel de Clientes
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const prevButton = document.querySelector('.carousel-arrow.prev');
+            const nextButton = document.querySelector('.carousel-arrow.next');
+
+            let step = getStep();
+            let currentIndex = 0;
+            let autoTimer;
+
+            function getStep() {
+            const s = slides[0];
+            const rect = s.getBoundingClientRect();
+            const cs = window.getComputedStyle(s);
+            const marginLeft = parseFloat(cs.marginLeft) || 0;
+            const marginRight = parseFloat(cs.marginRight) || 0;
+            return rect.width + marginLeft + marginRight;
+            }
+
+            function goTo(index, animate = true) {
+            currentIndex = (index + slides.length) % slides.length;
+            if (!animate) track.style.transition = 'none';
+            track.style.transform = `translateX(-${currentIndex * step}px)`;
+            if (!animate) {
+                void track.offsetWidth;
+                track.style.transition = '';
+            }
+            }
+
+            function next() {
+            stopAutoscroll();
+            goTo(currentIndex + 1);
+            resetAutoscroll();
+            }
+
+            function prev() {
+            stopAutoscroll();
+            goTo(currentIndex - 1);
+            resetAutoscroll();
+            }
+
+            nextButton.addEventListener('click', next);
+            prevButton.addEventListener('click', prev);
+
+            window.addEventListener('resize', () => {
+            step = getStep();
+            goTo(currentIndex, false);
+            });
+
+            function startAutoscroll() {
+            track.classList.add('autoscroll'); 
+            }
+
+            function stopAutoscroll() {
+            track.classList.remove('autoscroll'); 
+            }
+
+            function resetAutoscroll() {
+            stopAutoscroll();
+            clearTimeout(autoTimer);
+            autoTimer = setTimeout(startAutoscroll, 5000); //reinicia após 5s
+            }
+            startAutoscroll();
+
+        const topMenu = document.querySelector(".top-menu");
+        const hero = document.querySelector(".hero-section");
+        function ajustarPadding() {
+            if (topMenu && hero) {
+                let padding = topMenu.offsetHeight;
+                if (window.innerWidth <= 768) {
+                    padding += 20; 
+                } else {
+                    padding -= 10; 
+                }
+                hero.style.paddingTop = padding + "px";
+            }
+        }
+        ajustarPadding();
+        window.addEventListener("resize", ajustarPadding);
+
+        });
+    </script>
+</body>
+</html>
