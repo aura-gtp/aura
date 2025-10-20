@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KDXJH9ZR');</script>
-<!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17096684714"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17096684714');
-</script>
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA - Transformando Cliques em Clientes</title>
@@ -534,22 +519,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPEPK5VB2B">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SPEPK5VB2B');
-</script>
     </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDXJH9ZR"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
     <!-- ==================== MENU SUPERIOR ==================== -->
     <nav class="top-menu">
@@ -585,7 +556,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h2 class="brand-name">AURA</h2>
                 <h1>O Caminho Mais Curto Entre Seu Negócio e Seus Clientes.</h1>
                 <p>Somos a AURA. Desenhamos estratégias de tráfego pago que transformam seus cliques em clientes.</p>
-                <a href="#contato" class="cta-button">AGENDAR DIAGNÓSTICO GRATUITO</a>
+                <a href="#contato" class="cta-button">IMPULSIONE SUAS VENDAS</a>
             </div>
             <div class="hero-video-wrapper">
                 <video autoplay loop muted playsinline>
@@ -741,21 +712,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Funcionalidade: Rolagem suave para âncoras
+            // Funcionalidade: Rolagem suave para âncoras e atualização da URL
             const links = document.querySelectorAll('a[href^="#"]');
             
             links.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    let targetId = this.getAttribute('href');
-                    let targetElement = document.querySelector(targetId);
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
                     
                     if (targetElement) {
+                        e.preventDefault();
+
+                        // Atualiza a URL na barra de endereço
+                        history.pushState(null, null, targetId);
+                        
+                        // Fecha o menu mobile (se estiver aberto) ao clicar em um link
                         if(window.innerWidth <= 768) {
                             document.getElementById('menu-links').classList.remove('active');
                         }
                         
+                        // Calcula o offset do menu fixo para não cobrir o título da seção
                         const menuHeight = document.querySelector('.top-menu').offsetHeight;
                         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - menuHeight;
                         
@@ -860,9 +836,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
-
-
-
-
-
-
